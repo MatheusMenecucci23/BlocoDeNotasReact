@@ -1,20 +1,49 @@
-import React, { Component } from "react";//importando o Component
-import "./style.css"
+import React, { Component } from "react"; //importando o Component
+import "./style.css";
 class FormularioCadastro extends Component {
+  constructor(props) {
+    //inicializando variáveis
+    //props: 
+    super(props); //sempre chamar essa classe
+    this.titulo = "";
+    this.texto = "";
+  }
+  _
+  
+  _handleMudancaTitulo(evento) {//criando uma função que pega o evento onChange
+    this.titulo = evento.target.value;//titulo recebe o que é digitado no input
+    evento.stopPropagation()
+  }
+
+
+  _handleMudancaTexto(evento){
+    this.texto = evento.target.value;//nota recebe o que é digitado no textarea
+    evento.stopPropagation()
+  }
+
+
+  _criarNota(evento){//quando o subimit for dados, essa funtion será criada
+    evento.preventDefault();//removendo o comportamento padrão
+    evento.stopPropagation()
+    this.props.criarNota(this.titulo,this.texto)
+  }
+
   render() {
     return (
-      <form className="form-cadastro ">
+      <form className="form-cadastro " onSubmit={this._criarNota.bind(this)}>
         <input
           type="text"
           placeholder="Título"
           className="form-cadastro_input"
+          onChange={this._handleMudancaTitulo.bind(this)} //a cada mudança no campo, chame a função {funtion}
         />
         <textarea
           rows={15}
           placeholder="Escreva sua nota..."
           className="form-cadastro_input"
+          onChange={this._handleMudancaTexto.bind(this)}
         />
-        <button className="form-cadastro_input form-cadastro_submit">
+        <button className="form-cadastro_input form-cadastro_submit" type="submit">
           Criar Nota
         </button>
       </form>
