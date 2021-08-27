@@ -17,8 +17,8 @@ class App extends Component {
     };
   }
 
-  criarNota1(titulo, texto) {
-    const novaNota = { titulo, texto };
+  criarNota1(titulo, texto, categoria) {
+    const novaNota = { titulo, texto, categoria };
 
     //pegando o estado anterior e associando/adicionando uma novaNota
     const novoArrayNotas = [...this.state.notas2, novaNota]; //toda vez que essa linha for executada, ela vai pegar esse parametros a passar para dentro do array juntando com os valores antigos
@@ -51,6 +51,7 @@ class App extends Component {
         {/* /criarNota2 vai receber a função criarNota1 e lá no FormularioCadastro, o criarNota2 vai modificar os parametro de criarNota1/ */}
         <FormularioCadastro
           criarNota2={this.criarNota1.bind(this)}
+          categorias={this.state.categorias}
         ></FormularioCadastro>
         <main className="conteudo-principal">
           <ListaDeCategorias 
