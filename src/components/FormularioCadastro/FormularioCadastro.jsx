@@ -3,7 +3,7 @@ import "./style.css";
 class FormularioCadastro extends Component {
   constructor(props) {
     //inicializando variáveis
-    //props: 
+    //props: é uma propriedade criarNota2 passada pelo app.js
     super(props); //sempre chamar essa classe
     this.titulo = "";
     this.texto = "";
@@ -25,7 +25,7 @@ class FormularioCadastro extends Component {
   _criarNota(evento){//quando o subimit for dados, essa funtion será criada
     evento.preventDefault();//removendo o comportamento padrão
     evento.stopPropagation()
-    this.props.criarNota(this.titulo,this.texto)
+    this.props.criarNota2(this.titulo,this.texto)//pega o que foi passado pelo na {} app.js e modifica
   }
 
   render() {

@@ -9,28 +9,30 @@ class App extends Component {//minha aplicação principal
   constructor(){
     super()
     this.state ={//estado inicial
-      notas:[]
+      notas2:[]//array de notas que é exibido
     }
   }
 
 
   criarNota1(titulo,texto){
     const novaNota = {titulo, texto}
+    
+    //pegando o estado anterior e associando/adicionando uma novaNota
+    const novoArrayNotas = [...this.state.notas2,novaNota]//toda vez que essa linha for executada, ela vai pegar esse parametros a passar para dentro do array juntando com os valores antigos
+    
     //alterando o estado
-    const novoArrayNotas = [...this.state.notas,novaNota]
-    const novoEstado = {
-      notas: novoArrayNotas
-    }
-    this.setState(novoEstado)
+    this.setState ({
+      notas2: novoArrayNotas
+    })
   }
 
   //aplicação chamará o render de cada component
   render(){
     return (
       <section className="conteudo"> 
-      {/* /criarNota vai passar os parametros para o criarNota1/ */}
-        <FormularioCadastro criarNota={this.criarNota1.bind(this)}></FormularioCadastro>
-        <ListaDeNotas notas={this.state.notas}></ListaDeNotas>
+      {/* /criarNota2 vai receber a função criarNota1 e lá no FormularioCadastro, o criarNota2 vai modificar os parametro de criarNota1/ */}
+        <FormularioCadastro criarNota2={this.criarNota1.bind(this)}></FormularioCadastro>
+        <ListaDeNotas notas1={this.state.notas2}></ListaDeNotas>
       </section>
     );
   }
