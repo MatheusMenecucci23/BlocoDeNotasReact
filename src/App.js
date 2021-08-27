@@ -26,13 +26,22 @@ class App extends Component {//minha aplicação principal
     })
   }
 
+  deletarNota(index){
+    let ArrayNotas = this.state.notas2
+    ArrayNotas.splice(index,1)
+    this.setState({notas2:ArrayNotas})
+    console.log("deletar")
+  }
+
   //aplicação chamará o render de cada component
   render(){
     return (
       <section className="conteudo"> 
       {/* /criarNota2 vai receber a função criarNota1 e lá no FormularioCadastro, o criarNota2 vai modificar os parametro de criarNota1/ */}
         <FormularioCadastro criarNota2={this.criarNota1.bind(this)}></FormularioCadastro>
-        <ListaDeNotas notas1={this.state.notas2}></ListaDeNotas>
+        <ListaDeNotas 
+        apagarNota={this.deletarNota.bind(this)}
+        notas1={this.state.notas2}></ListaDeNotas>
       </section>
     );
   }
