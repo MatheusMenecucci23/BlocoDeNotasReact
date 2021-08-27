@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+# Adicionando notas
+![Animação-alura-ceep](https://user-images.githubusercontent.com/72262553/131134777-6744f307-d4f4-470a-8ba4-332c6973b716.gif)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
